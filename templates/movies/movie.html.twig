@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %} 
+{% block title %}Hello MoviesController!{% endblock %}
+
+{% block stylesheets %}
+<style>
+
+
+    .container {
+        background-color: white;
+      
+     
+      
+        
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        background-color:cadetblue;
+
+    }
+    
+    .card {
+        align-items: center;
+        border-radius:10px;
+        margin-top: 10px;
+    }
+
+    h1 {
+        margin-top: 50Px;
+        padding-top: 50px;
+        margin-bottom: 50px;
+        text-align: center;
+        font-family: 'Quicksand', sans-serif;
+        font-weight: bold;
+
+
+    }
+
+    .col-md-8 {
+        margin-top: 20px;
+    }
+        
+</style>
+
+{% endblock %}
+
+
+
+{% block body %}
+
+<div class="container">
+    <h1>{{ movie.name }}</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ movie.cover }}" class="card-img-top" alt="...">
+                    
+            </div>
+        </div>
+        <div class="col-md-8">
+            <p>Date: {{ movie.date.format("d/m/Y") }}  </p>
+            <p>Autheur: {{ movie.date.format("d/m/Y") }}  </p>
+
+           
+                
+        </div>
+        <div class="row">
+            <h2> Description</h2>
+            {{ movie.description }}
+        </div>
+       
+            
+
+    </div>
+
+</div>
+{% endblock %}
