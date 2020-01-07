@@ -16,7 +16,9 @@
     body {
         margin: 0px;
         padding: 0px;
-        background-color:cadetblue;
+        background-image: url('{{ movie.cover }}');
+        background-repeat: no-repeat;
+        background-size: cover;
 
     }
     
@@ -31,8 +33,9 @@
         padding-top: 50px;
         margin-bottom: 50px;
         text-align: center;
-        font-family: 'Quicksand', sans-serif;
-        font-weight: bold;
+        font-family: Open Sans,sans-serif;
+        text-transform: uppercase;
+        
 
 
     }
@@ -40,6 +43,40 @@
     .col-md-8 {
         margin-top: 20px;
     }
+
+    #despription, h2 {
+        
+        font-family: HelveticaNeueLTStd-Roman,sans-serif;
+        position: relative;
+        cursor: pointer;
+        display: inline;
+        margin-right: 25px;
+        text-transform: uppercase;
+      
+        padding-bottom: 50px;
+        font-size: 1.4rem;
+        line-height: 30px;
+      
+            
+    }
+    h2 {
+        margin-top: 50px;;
+    }
+   .inline li {
+        display: inline;
+        font-size: 0.8rem;
+        font-weight: 700;
+        line-height: 0.5em;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 20px;
+        padding: 12px 30px;
+        background-color: #ff7200;
+        border: none;
+        color: #fff;
+}
+       
+   
         
 </style>
 
@@ -48,6 +85,27 @@
 
 
 {% block body %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg">
+        
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="#"> Découvrir HomeCine</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Abonnés<span class="sr-only">(current)</span></a>
+        </li>
+        
+        
+        </ul>
+        
+    </div>
+</nav>
 
 <div class="container">
     <h1>{{ movie.name }}</h1>
@@ -60,20 +118,28 @@
             </div>
         </div>
         <div class="col-md-8">
-            <p>Date: {{ movie.date.format("d/m/Y") }}  </p>
-            <p>Autheur: {{ movie.date.format("d/m/Y") }}  </p>
-
-           
-                
+            <h2> présentation</h2>
+            <ul class= "inline">
+                <li>Date: {{ movie.date.format("d/m/Y") }}</li>
+                <li>Autheur: <a href="{{ path('author', { id: movie.author.id }) }}">{{ movie.author.name }}  </a></li>
+                <li>Catégorie: {% for category in movie.category %} {{ category.name }} {% endfor %}</li>
+            </ul>
+            <h3>Synopsis</h3>
+            <div id="description">
+                {{ movie.description }}
+            </div>
+            
+                      
         </div>
-        <div class="row">
-            <h2> Description</h2>
-            {{ movie.description }}
-        </div>
+          
+        
+    </div>
+    
+    
        
             
 
-    </div>
+    
 
 </div>
 {% endblock %}
