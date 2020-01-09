@@ -28,8 +28,11 @@ class AuthorsController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($author);
             $entityManager->flush();
-        }
+             // redirects to the "movies" route
+            return $this->redirectToRoute('movies');
 
+        }
+       
         return $this->render('admin/authors/add.html.twig', [
             
             'form' => $form->createView(),

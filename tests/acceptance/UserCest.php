@@ -21,7 +21,7 @@ class UserCest
     public function tryToLoginFail(AcceptanceTester $I)
     {
         $I->amOnPage('/login');
-        $I->fillField('email','fake@gmail.com');
+        $I->fillField('email','h.bo@gmail.com');
         $I->fillField('password','aaa');
         $I->click('Se connecter');
         $I->see('Invalid credentials.');
