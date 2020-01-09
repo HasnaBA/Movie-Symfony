@@ -12,6 +12,7 @@ class UserCest
     {
         $I->amOnPage('/login');
         $I->fillField('email','h.bourajoini@gmail.com');
+        $I->makeHtmlSnapshot();
         $I->fillField('password','clavie');
         $I->click('Se connecter');
         $I->see('LISTE DES FILMS');
@@ -20,7 +21,7 @@ class UserCest
     public function tryToLoginFail(AcceptanceTester $I)
     {
         $I->amOnPage('/login');
-        $I->fillField('email','h.bourajoini@gmail.com');
+        $I->fillField('email','fake@gmail.com');
         $I->fillField('password','aaa');
         $I->click('Se connecter');
         $I->see('Invalid credentials.');
